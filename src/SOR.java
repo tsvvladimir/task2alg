@@ -43,7 +43,7 @@ public class SOR {
         this.U.show();
         System.out.println("Solution:");
     }
-    public Matrix execute(int stepmax, double w) {
+    public Matrix execute1(int stepmax, double w) {
         Matrix xk = new Matrix(D.M, 1);
         Matrix xk1 = new Matrix(D.M, 1);
         for(int i = 0; i < D.M; i++) {
@@ -56,6 +56,24 @@ public class SOR {
             Matrix help2 = DminwLinv.times(help1.times(xk));
             Matrix help3 = DminwLinv.muldig(w).times(B);
             xk1 = help2.plus(help3);
+            xk = xk1;
+            xk.show();
+            System.out.println("\n");
+        }
+        return xk1;
+    }
+
+    public Matrix execute2(int stepmax, double w) {
+        Matrix xk = new Matrix(D.M, 1);
+        Matrix xk1 = new Matrix(D.M, 1);
+        for(int i = 0; i < D.M; i++) {
+            xk1.setElement(i, 0, 1.0);
+        }
+        for(int step = 0; step < stepmax; step++) {
+            Matrix help1 = L.plus(D.muldig(1/w));
+            Matrix help2 = help1.degMin1();
+            Matrix help3 = D.muldig(1/w).minus(D).minus(U);
+            xk1 = help2.times(help3.times(xk).plus(B));
             xk = xk1;
             xk.show();
             System.out.println("\n");

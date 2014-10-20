@@ -23,8 +23,8 @@ public class Main {
         //test SOR
         System.out.println("hello SOR!");
         int n = 5;
-        int maxsteps = 100;
-        double w = 1.5;
+        int maxsteps = 25;
+        double w = 1.9;
         //Matrix A = Matrix.randomsym(n, n);
         Matrix A = new Matrix(new double[][] {{2.0, 1.0}, {5.0, 7.0}} );
         Matrix help1 = new Matrix(n, 1);
@@ -34,13 +34,14 @@ public class Main {
         Matrix B = new Matrix(new double[][] {{11}, {13}});
         SOR sor = new SOR(A, B);
         sor.dsplit();
-        Matrix result = sor.execute(maxsteps, w);
+        //Matrix result = sor.execute1(maxsteps, w);
+        Matrix result = sor.execute2(maxsteps, w);
         result.show();
         System.out.println("bye bye SOR!");
     }
     public static void main(String[] args) {
 	// write your code here
-     testJacobi();
+     //testJacobi();
      testSOR();
     }
 }
