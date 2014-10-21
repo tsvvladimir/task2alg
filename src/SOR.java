@@ -52,7 +52,7 @@ public class SOR {
         for(int step = 0; step < stepmax; step++) {
             Matrix DminwL = D.minus(L.muldig(w));
             Matrix DminwLinv = DminwL.degMin1();
-            Matrix help1 = D.muldig(1 - w).minus(U.muldig(w));
+            Matrix help1 = D.muldig(1 - w).plus(U.muldig(w));
             Matrix help2 = DminwLinv.times(help1.times(xk));
             Matrix help3 = DminwLinv.muldig(w).times(B);
             xk1 = help2.plus(help3);

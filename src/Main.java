@@ -24,18 +24,20 @@ public class Main {
         System.out.println("hello SOR!");
         int n = 5;
         int maxsteps = 25;
-        double w = 1.9;
+        double w = 1.3;
         //Matrix A = Matrix.randomsym(n, n);
-        Matrix A = new Matrix(new double[][] {{2.0, 1.0}, {5.0, 7.0}} );
-        Matrix help1 = new Matrix(n, 1);
-        for(int i = 0; i < n; i++)
+        Matrix A = new Matrix(new double[][] {{2.0, 1.0}, {1.0, 7.0}} );
+        Matrix help1 = new Matrix(A.M, 1);
+        for(int i = 0; i < A.M; i++)
             help1.data[i][0] = 1;
-        //B = new Matrix(A.times(help1));
-        Matrix B = new Matrix(new double[][] {{11}, {13}});
+        Matrix B = new Matrix(A.times(help1));
+        System.out.println("matrix B:");
+        B.show();
+        //Matrix B = new Matrix(new double[][] {{11}, {13}});
         SOR sor = new SOR(A, B);
         sor.dsplit();
-        //Matrix result = sor.execute1(maxsteps, w);
-        Matrix result = sor.execute2(maxsteps, w);
+        Matrix result = sor.execute1(maxsteps, w);
+        //Matrix result = sor.execute2(maxsteps, w);
         result.show();
         System.out.println("bye bye SOR!");
     }
