@@ -86,6 +86,27 @@ final public class Matrix {
         return I;
     }
 
+    public static Matrix Null(int M, int N) {
+        double [][]a = new double[M][N];
+        for (int i = 0; i < M; i++)
+            for (int j = 0; j < N; j++)
+                a[i][j] = 0;
+        return new Matrix(a);
+    }
+
+    public Matrix getBlock(int fromRaw, int toRaw, int fromColumn, int toColumn) {
+        if(data == null || fromRaw > toRaw || fromColumn > toColumn || toRaw-1 > data.length || toColumn-1 > data[0].length) {
+            System.out.println("error in Matrix.getBlock - can't get such block");
+            return null;
+        }
+        int n = toRaw-fromRaw, m = toColumn-fromColumn;
+        double [][]a = new double[n][m];
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < m; j++)
+                a[i][j] = data[fromRaw+i][fromColumn+j];
+        return new Matrix(a);
+    }
+
     // swap rows i and j
     public void swap(int i, int j) {
         double[] temp = data[i];
@@ -170,6 +191,15 @@ final public class Matrix {
                 for (int k = 0; k < A.N; k++)
                     C.data[i][j] += (A.data[i][k] * B.data[k][j]);
         return C;
+    }
+
+    public Matrix mulOnConstant(double constant) {
+        if (data == null) { return null; }
+        double [][]a = new double[data.length][data[0].length];
+        for (int i = 0; i < data.length; i++)
+            for (int j = 0; j < data[i].length; j++)
+                a[i][j] = constant * data[i][j];
+        return new Matrix(a);
     }
 
 
@@ -320,6 +350,23 @@ final public class Matrix {
 
         return new Matrix(A);
 
+    }
+
+    //count norm of matrix as sum of its elemnts divided on number of elements
+    public double norm1() {
+        double result = 0;
+        for (int i = 0; i < data.length; i++)
+            for (int j = 0; j < data[0].length; j++)
+                result += Math.abs(data[i][j]);
+        return result/(data.length*data[0].length);
+    }
+    //counts norm of matrixs as sqrt of sum of elements^2
+    public double norm2() {
+        double result = 0;
+        for (int i = 0; i < data.length; i++)
+            for (int j = 0; j < data[0].length; j++)
+                result += data[i][j]*data[i][j];
+        return Math.sqrt(result);
     }
 
     // print matrix to standard output
