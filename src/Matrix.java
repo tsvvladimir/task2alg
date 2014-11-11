@@ -21,6 +21,7 @@ final public class Matrix {
                 data[i][j] = 0.0;
     }
 
+
     // create matrix based on 2d array
     public Matrix(double[][] data) {
         M = data.length;
