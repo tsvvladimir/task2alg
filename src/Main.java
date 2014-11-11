@@ -65,10 +65,35 @@ public class Main {
         result.show();
         System.out.println("bye bye optimJacobi!");
     }
+    public static void  testcheba() {
+        //test optimum Jacobi
+        System.out.println("hello Chebyshev!");
+        int n = 5;
+        int maxsteps = 25;
+        double w = 1.3;
+        //Matrix A = Matrix.randomsym(n, n);
+        double m = 0.1;
+        double M = 0.5;
+        Matrix A = new Matrix(new double[][] {{0.1, 1, 0, 0, 0}, {0, 0.1, 0, 0, 0}, {0, 0, 0.5, 1, 0}, {0, 0, 0, 0.5, 1}, {0, 0, 0, 0, 0.5}} );
+        Matrix help1 = new Matrix(A.M, 1);
+        for(int i = 0; i < A.M; i++)
+            help1.data[i][0] = 1;
+        Matrix B = new Matrix(A.times(help1));
+        System.out.println("matrix B:");
+        B.show();
+        //Matrix B = new Matrix(new double[][] {{11}, {13}});
+        Cheb ch = new Cheb(A, B, m, M);
+        ch.dsplit();
+        //Matrix result = opJ.execute1(maxsteps, w);
+        Matrix result = ch.execute(maxsteps);
+        result.show();
+        System.out.println("bye bye Chebyshev!");
+    }
     public static void main(String[] args) {
 	// write your code here
      //testJacobi();
      //testSOR();
-       testoptimumiterJacobi();
+       //testoptimumiterJacobi();
+        testcheba()
     }
 }
