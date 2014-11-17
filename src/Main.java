@@ -117,7 +117,7 @@ public class Main {
      //testJacobi();
      //testSOR();
        //testoptimumiterJacobi();
-        //testcheba();
-        testCG();
+        testcheba();
+        //testCG();
     }
 }

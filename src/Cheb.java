@@ -48,14 +48,15 @@ public class Cheb {
         System.out.println("Solution:");
     }
     public Matrix execute(int stepmax) {
-        /*
+
         Matrix xk = new Matrix(D.M, 1);
         Matrix xk1 = new Matrix(D.M, 1);
+        Matrix xkmin1 = new Matrix(D.M, 1);
         for(int i = 0; i < D.M; i++) {
             xk1.setElement(i, 0, 1.0);
         }
         double r0 = 1.0;
-        bool flag = false;
+        boolean flag = false;
         for(int step = 0; step < stepmax; step++) {
             Matrix Dmin1 = D.degMin1();
             Matrix UplusL = U.plus(L);
@@ -76,19 +77,22 @@ public class Cheb {
             Matrix gv1 = v1.muldig(g);
             Matrix v2 = xk.muldig(1.0 - g);
             Matrix v3 = gv1.plus(v2).muldig(r1);
-            Matrix v4 =
+            Matrix v4 = xkmin1.muldig(1 - r1);
+            xk1 = v3.plus(v4);
             //compute xk+1 here
 
             //xk1 = Rg.times(xk).plus(Cg);
             //xk1 = R.times(xk).plus(C);
             xk = xk1;
             r0 = r1;
-            xk.show();
+            xkmin1 = xk;
+            xk = xk1;
+            xk1.show();
             System.out.println("\n");
         }
 
         return xk1;
-        */
-        return null;
+
+        //return null;
     }
 }
