@@ -35,6 +35,8 @@ final public class Matrix {
     // copy constructor
     public Matrix(Matrix A) { this(A.data); }
 
+
+
     //changed
     public double GetElement(int i, int j) {
         return data[i][j];
