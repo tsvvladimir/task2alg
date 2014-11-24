@@ -48,7 +48,7 @@ public class Jacobi {
         Matrix xk = new Matrix(D.M, 1);
         Matrix xk1 = new Matrix(D.M, 1);
         for(int i = 0; i < D.M; i++) {
-            xk.setElement(i, 0, 5.0);
+            xk.setElement(i, 0, 0.0);
         }
         for(int step = 0; step < stepmax; step++) {
             Matrix Dmin1 = D.degMin1();
