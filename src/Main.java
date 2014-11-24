@@ -9,11 +9,11 @@ public class Main {
         Matrix help1 = new Matrix(A.M, 1);
         for(int i = 0; i < A.M; i++)
             help1.data[i][0] = 1;
-        Matrix B = new Matrix(A.times(help1));
-        //Matrix B = new Matrix(new double[][] {{11}, {13}});
+        //Matrix B = new Matrix(A.times(help1));
+        Matrix B = new Matrix(new double[][] {{0.3}, {0.2}, {0.5}});
         Jacobi j = new Jacobi(A, B);
         j.dsplit();
-        double accur = 0.001;
+        double accur = 0.0001;
         Matrix result = j.execute(maxsteps, accur);
         //result.show();
         System.out.println("bye bye Jacobi!");
