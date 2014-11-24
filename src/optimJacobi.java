@@ -51,7 +51,7 @@ public class optimJacobi {
         Matrix xk = new Matrix(D.M, 1);
         Matrix xk1 = new Matrix(D.M, 1);
         for(int i = 0; i < D.M; i++) {
-            xk1.setElement(i, 0, 1.0);
+            xk.setElement(i, 0, 0.001);
         }
         for(int step = 0; step < stepmax; step++) {
             Matrix Dmin1 = D.degMin1();
@@ -61,12 +61,32 @@ public class optimJacobi {
             double g = 2.0 / (2.0 - this.M - this.m);
             Matrix Rg = R.muldig(g).plus(Matrix.identity(A.M).muldig(1.0 - g));
             Matrix Cg = C.muldig(g);
+            System.out.println("R:\n");
+            R.show();
             xk1 = Rg.times(xk).plus(Cg);
             //xk1 = R.times(xk).plus(C);
             xk = xk1;
+            System.out.println("step:" + step + "\n");
             xk.show();
+
+            System.out.println("\n");
+            System.out.println("nevyazka:\n");
+            (B.minus(A.times(xk))).show();
             System.out.println("\n");
         }
+        System.out.println("A:\n");
+        A.show();
+        System.out.println("B:\n");
+        B.show();
+        System.out.println("xk:\n");
+        xk.show();
+        System.out.println("must be like B:\n");
+        A.times(xk).show();
+        System.out.println("nevyazka:\n");
+
+        (B.minus(A.times(xk))).show();
+        System.out.println("\n");
+
         return xk1;
     }
 }

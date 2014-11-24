@@ -47,7 +47,7 @@ public class SOR {
         Matrix xk = new Matrix(D.M, 1);
         Matrix xk1 = new Matrix(D.M, 1);
         for(int i = 0; i < D.M; i++) {
-            xk1.setElement(i, 0, 1.0);
+            xk1.setElement(i, 0, 0.1);
         }
         for(int step = 0; step < stepmax; step++) {
             Matrix DminwL = D.minus(L.muldig(w));

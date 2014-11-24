@@ -44,13 +44,17 @@ public class Main {
     public static void  testoptimumiterJacobi() {
         //test optimum Jacobi
         System.out.println("hello optimJacobi!");
-        int n = 5;
-        int maxsteps = 25;
-        double w = 1.3;
+        //int n = 5;
+        int maxsteps = 100;
+        //double w = 1.3;
         //Matrix A = Matrix.randomsym(n, n);
-        double m = 0.1;
-        double M = 0.5;
-        Matrix A = new Matrix(new double[][] {{0.1, 1, 0, 0, 0}, {0, 0.1, 0, 0, 0}, {0, 0, 0.5, 1, 0}, {0, 0, 0, 0.5, 1}, {0, 0, 0, 0, 0.5}} );
+        //double m = 0.1;
+        //double M = 0.5;
+        double m = -0.02;
+        double M = 0.7;
+        //Matrix A = new Matrix(new double[][] {{0.1, 1, 0, 0, 0}, {0, 0.1, 0, 0, 0}, {0, 0, 0.5, 1, 0}, {0, 0, 0, 0.5, 1}, {0, 0, 0, 0, 0.5}} );
+        //Matrix A = new Matrix(new double[][] {{0.01,0.1,0.1}, {0.1,0.7,0}, {0.1,0,0.5}});
+        Matrix A = new Matrix(new double[][] {{100.0,0.1,0.1}, {0.1,10.0/7.0,0}, {0.1,0,2.0}});
         Matrix help1 = new Matrix(A.M, 1);
         for(int i = 0; i < A.M; i++)
             help1.data[i][0] = 1;
@@ -72,9 +76,10 @@ public class Main {
         int maxsteps = 25;
         double w = 1.3;
         //Matrix A = Matrix.randomsym(n, n);
-        double m = 0.1;
-        double M = 0.5;
-        Matrix A = new Matrix(new double[][] {{0.1, 1, 0, 0, 0}, {0, 0.1, 0, 0, 0}, {0, 0, 0.5, 1, 0}, {0, 0, 0, 0.5, 1}, {0, 0, 0, 0, 0.5}} );
+        double m = -0.02;
+        double M = 0.7;
+        //Matrix A = new Matrix(new double[][] {{0.1, 1, 0, 0, 0}, {0, 0.1, 0, 0, 0}, {0, 0, 0.5, 1, 0}, {0, 0, 0, 0.5, 1}, {0, 0, 0, 0, 0.5}} );
+        Matrix A = new Matrix(new double[][] {{100.0,0.1,0.1}, {0.1,10.0/7.0,0}, {0.1,0,2.0}});
         Matrix help1 = new Matrix(A.M, 1);
         for(int i = 0; i < A.M; i++)
             help1.data[i][0] = 1;
@@ -97,7 +102,8 @@ public class Main {
         int maxsteps = 10;
         double w = 1.3;
         //Matrix A = Matrix.randomsym(n, n);
-        Matrix A = new Matrix(new double[][] {{2.0, 1.0}, {1.0, 7.0}} );
+        //Matrix A = new Matrix(new double[][] {{2.0, 1.0}, {1.0, 7.0}} );
+        Matrix A = new Matrix(new double[][] {{100.0,0.1,0.1}, {0.1,10.0/7.0,0}, {0.1,0,2.0}});
         Matrix help1 = new Matrix(A.M, 1);
         for(int i = 0; i < A.M; i++)
             help1.data[i][0] = 1;
@@ -117,7 +123,7 @@ public class Main {
      //testJacobi();
      //testSOR();
        //testoptimumiterJacobi();
-        testcheba();
-        //testCG();
+        //testcheba();
+        testCG();
     }
 }
