@@ -118,12 +118,37 @@ public class Main {
         result.show();
         System.out.println("bye bye CG!");
     }
+
+    public static void testSSORblock() {
+        //SSOR block
+        System.out.println("try it");
+
+        int n = 9;
+
+        //Matrix A = new Matrix(new double[][]{{1,0, 0}, {0,1,0}, {0,0,1}});//
+        //Matrix b = new Matrix(new double[][]{{1}, {2}, {3}});//
+
+        Matrix A = Matrix.randomsym(n, n);
+        Matrix b = Matrix.random(n,1);
+
+        //Matrix approxim = new Matrix(new double[][]{{10}, {10}, {10}});//
+        Matrix approxim =  Matrix.random(n, 1);
+
+
+        SSORblock sb = new SSORblock(A, b, approxim, 1, 3);
+        sb.printResultChangingW(null);
+    }
+
     public static void main(String[] args) {
-	// write your code here
-     //testJacobi();
-     //testSOR();
-       //testoptimumiterJacobi();
-        //testcheba();
-        testCG();
+        
+     testSSORblock();
+
+     testJacobi();
+     testSOR();
+
+     testoptimumiterJacobi();
+     testcheba();
+     testCG();
+
     }
 }

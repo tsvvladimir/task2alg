@@ -114,7 +114,7 @@ public class SSORblock {
              for (int i = 0; i < x.data[0].length; i++)
                  accuracy.setElement(i, 0, 0.00000000000000000001);
          }*/
-         double accur = 0.000000000000001;
+         double accur = 0.01;
 
          for (double w = 0; w < 2; w += 0.01) {
              this.w = w;
