@@ -48,9 +48,10 @@ public class Main {
         int maxsteps = 25;
         double w = 1.3;
         //Matrix A = Matrix.randomsym(n, n);
-        double m = 0.1;
-        double M = 0.5;
+        double m = -0.3;
+        double M = 1.3;
         Matrix A = new Matrix(new double[][] {{0.1, 1, 0, 0, 0}, {0, 0.1, 0, 0, 0}, {0, 0, 0.5, 1, 0}, {0, 0, 0, 0.5, 1}, {0, 0, 0, 0, 0.5}} );
+        A = A.plus(A.transpose()).muldig(0.5);
         Matrix help1 = new Matrix(A.M, 1);
         for(int i = 0; i < A.M; i++)
             help1.data[i][0] = 1;
@@ -116,8 +117,8 @@ public class Main {
 	// write your code here
      //testJacobi();
      //testSOR();
-       //testoptimumiterJacobi();
-        testcheba();
+       testoptimumiterJacobi();
+        //testcheba();
         //testCG();
     }
 }
