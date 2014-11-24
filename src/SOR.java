@@ -43,7 +43,7 @@ public class SOR {
         this.U.show();
         System.out.println("Solution:");
     }
-    public Matrix execute1(int stepmax, double w) {
+    public Matrix execute1(int stepmax, double w, double accur) {
         Matrix xk = new Matrix(D.M, 1);
         Matrix xk1 = new Matrix(D.M, 1);
         for(int i = 0; i < D.M; i++) {
@@ -59,6 +59,12 @@ public class SOR {
             xk = xk1;
             xk.show();
             System.out.println("\n");
+            Matrix nevyz = (B.minus(A.times(xk)));
+            double norm = nevyz.norm2();
+            if (norm < accur) {
+                System.out.println("Congrats!!!!!! steps SOR:" + step + "\n");
+                break;
+            }
         }
         return xk1;
     }

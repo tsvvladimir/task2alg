@@ -13,7 +13,8 @@ public class Main {
         //Matrix B = new Matrix(new double[][] {{11}, {13}});
         Jacobi j = new Jacobi(A, B);
         j.dsplit();
-        Matrix result = j.execute(maxsteps);
+        double accur = 0.001;
+        Matrix result = j.execute(maxsteps, accur);
         result.show();
         System.out.println("bye bye Jacobi!");
 
@@ -24,9 +25,9 @@ public class Main {
         System.out.println("hello SOR!");
         int n = 5;
         int maxsteps = 25;
-        double w = 1.3;
+        double w = 1.0;
         //Matrix A = Matrix.randomsym(n, n);
-        Matrix A = new Matrix(new double[][] {{2.0, 1.0}, {1.0, 7.0}} );
+        Matrix A = new Matrix(new double[][] {{2.0, 1.0}, {5.0, 7.0}} );
         Matrix help1 = new Matrix(A.M, 1);
         for(int i = 0; i < A.M; i++)
             help1.data[i][0] = 1;
@@ -36,7 +37,8 @@ public class Main {
         //Matrix B = new Matrix(new double[][] {{11}, {13}});
         SOR sor = new SOR(A, B);
         sor.dsplit();
-        Matrix result = sor.execute1(maxsteps, w);
+        double accur = 0.001;
+        Matrix result = sor.execute1(maxsteps, w, accur);
         //Matrix result = sor.execute2(maxsteps, w);
         result.show();
         System.out.println("bye bye SOR!");
@@ -140,15 +142,15 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        
-     testSSORblock();
 
-     testJacobi();
+     //testSSORblock();
+
+     //testJacobi();
      testSOR();
 
-     testoptimumiterJacobi();
-     testcheba();
-     testCG();
+     //testoptimumiterJacobi();
+     //testcheba();
+     //testCG();
 
     }
 }

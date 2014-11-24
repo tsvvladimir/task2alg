@@ -43,7 +43,7 @@ public class Jacobi {
         this.U.show();
         System.out.println("Solution:");
     }
-    public Matrix execute(int stepmax) {
+    public Matrix execute(int stepmax, double accur) {
         Matrix xk = new Matrix(D.M, 1);
         Matrix xk1 = new Matrix(D.M, 1);
         for(int i = 0; i < D.M; i++) {
@@ -56,6 +56,12 @@ public class Jacobi {
             xk = xk1;
             xk.show();
             System.out.println("\n");
+            Matrix nevyz = (B.minus(A.times(xk)));
+            double norm = nevyz.norm2();
+            if (norm < accur) {
+                System.out.println("Congrats!!!!!! steps Jacobi:" + step + "\n");
+                break;
+            }
         }
         return xk1;
     }
