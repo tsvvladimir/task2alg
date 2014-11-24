@@ -2,10 +2,10 @@ public class Main {
     public static void testJacobi() {
         System.out.println("hello Jacobi!");
         //test Jacobi
-        int n = 5;
-        int maxsteps = 25;
-        //Matrix A = Matrix.randomsym(n, n);
-        Matrix A = new Matrix(new double[][] {{2.0, 1.0}, {5.0, 7.0}} );
+        int n = 4;
+        int maxsteps = 250;
+        //Matrix A = Matrix.randomsym(n, n).muldig(100.0);
+        Matrix A = new Matrix(new double[][] {{0.20, 0.50, 0.30}, {0.50, 0.40, 0.100}, {0.30, 0.100, 0.10}} );
         Matrix help1 = new Matrix(A.M, 1);
         for(int i = 0; i < A.M; i++)
             help1.data[i][0] = 1;
@@ -15,7 +15,7 @@ public class Main {
         j.dsplit();
         double accur = 0.001;
         Matrix result = j.execute(maxsteps, accur);
-        result.show();
+        //result.show();
         System.out.println("bye bye Jacobi!");
 
     }
@@ -28,6 +28,7 @@ public class Main {
         double w = 1.0;
         //Matrix A = Matrix.randomsym(n, n);
         Matrix A = new Matrix(new double[][] {{2.0, 1.0}, {5.0, 7.0}} );
+        //Matrix A = new Matrix(new double[][] {{0.20, 0.50, 0.30}, {0.50, 0.40, 0.100}, {0.30, 0.100, 0.10}} );
         Matrix help1 = new Matrix(A.M, 1);
         for(int i = 0; i < A.M; i++)
             help1.data[i][0] = 1;
@@ -145,8 +146,9 @@ public class Main {
 
      //testSSORblock();
 
-     //testJacobi();
-     testSOR();
+     testJacobi();
+
+     //testSOR();
 
      //testoptimumiterJacobi();
      //testcheba();

@@ -41,20 +41,22 @@ public class Jacobi {
         this.L.show();
         System.out.println("U");
         this.U.show();
-        System.out.println("Solution:");
+        //System.out.println("Solution:");
+        System.out.println();
     }
     public Matrix execute(int stepmax, double accur) {
         Matrix xk = new Matrix(D.M, 1);
         Matrix xk1 = new Matrix(D.M, 1);
         for(int i = 0; i < D.M; i++) {
-            xk1.setElement(i, 0, 0.1);
+            xk.setElement(i, 0, 5.0);
         }
         for(int step = 0; step < stepmax; step++) {
             Matrix Dmin1 = D.degMin1();
             Matrix UplusL = U.plus(L);
+            xk.show();
             xk1 = Dmin1.times(UplusL.times(xk)).plus(Dmin1.times(B));
             xk = xk1;
-            xk.show();
+
             System.out.println("\n");
             Matrix nevyz = (B.minus(A.times(xk)));
             double norm = nevyz.norm2();
@@ -63,6 +65,18 @@ public class Jacobi {
                 break;
             }
         }
+        System.out.println("A:\n");
+        A.show();
+        System.out.println("B:\n");
+        B.show();
+        System.out.println("xk:\n");
+        xk.show();
+        System.out.println("must be like B:\n");
+        A.times(xk).show();
+        System.out.println("nevyazka:\n");
+
+        (B.minus(A.times(xk))).show();
+        System.out.println("\n");
         return xk1;
     }
 }
