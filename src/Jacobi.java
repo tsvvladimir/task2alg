@@ -54,7 +54,9 @@ public class Jacobi {
             Matrix Dmin1 = D.degMin1();
             Matrix UplusL = U.plus(L);
             xk.show();
+
             xk1 = Dmin1.times(UplusL.times(xk)).plus(Dmin1.times(B));
+
             xk = xk1;
 
             System.out.println("\n");

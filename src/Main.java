@@ -2,18 +2,18 @@ public class Main {
     public static void testJacobi() {
         System.out.println("hello Jacobi!");
         //test Jacobi
-        int n = 4;
-        int maxsteps = 250;
+        //int n = 4;
+        int maxsteps = 25000;
         //Matrix A = Matrix.randomsym(n, n).muldig(100.0);
-        Matrix A = new Matrix(new double[][] {{0.20, 0.50, 0.30}, {0.50, 0.40, 0.100}, {0.30, 0.100, 0.10}} );
+        Matrix A = new Matrix(new double[][] {{5, 0.60, 0.30}, {0.30, 5, 0.100}, {0.20, 0.500, 5}} );
         Matrix help1 = new Matrix(A.M, 1);
         for(int i = 0; i < A.M; i++)
             help1.data[i][0] = 1;
-        //Matrix B = new Matrix(A.times(help1));
-        Matrix B = new Matrix(new double[][] {{0.3}, {0.2}, {0.5}});
+        Matrix B = new Matrix(A.times(help1));
+        //Matrix B = new Matrix(new double[][] {{3}, {0.2}, {0.5}});
         Jacobi j = new Jacobi(A, B);
         j.dsplit();
-        double accur = 0.0001;
+        double accur = 0.000001;
         Matrix result = j.execute(maxsteps, accur);
         //result.show();
         System.out.println("bye bye Jacobi!");
@@ -27,7 +27,7 @@ public class Main {
         int maxsteps = 25;
         double w = 1.0;
         //Matrix A = Matrix.randomsym(n, n);
-        Matrix A = new Matrix(new double[][] {{2.0, 1.0}, {5.0, 7.0}} );
+        Matrix A = new Matrix(new double[][]  {{5, 0.60, 0.30}, {0.30, 5, 0.100}, {0.20, 0.500, 5}} );
         //Matrix A = new Matrix(new double[][] {{0.20, 0.50, 0.30}, {0.50, 0.40, 0.100}, {0.30, 0.100, 0.10}} );
         Matrix help1 = new Matrix(A.M, 1);
         for(int i = 0; i < A.M; i++)
@@ -38,7 +38,7 @@ public class Main {
         //Matrix B = new Matrix(new double[][] {{11}, {13}});
         SOR sor = new SOR(A, B);
         sor.dsplit();
-        double accur = 0.001;
+        double accur = 0.000001;
         Matrix result = sor.execute1(maxsteps, w, accur);
         //Matrix result = sor.execute2(maxsteps, w);
         result.show();
@@ -146,9 +146,9 @@ public class Main {
 
      //testSSORblock();
 
-     testJacobi();
+     //testJacobi();
 
-     //testSOR();
+     testSOR();
 
      //testoptimumiterJacobi();
      //testcheba();
