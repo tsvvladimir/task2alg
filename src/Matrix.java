@@ -150,6 +150,14 @@ final public class Matrix {
         return C;
     }
 
+    //return C = A * digit
+    public Matrix muldiag(double a) {
+        Matrix C = new Matrix(this);
+        for(int i = 0; i < C.M; i++)
+            C.setElement(i, i, C.GetElement(i, i) * a);
+        return C;
+    }
+
     // return C = A + B
     public Matrix plus(Matrix B) {
         Matrix A = new Matrix(this);

@@ -2,10 +2,11 @@ public class Main {
     public static void testJacobi() {
         System.out.println("hello Jacobi!");
         //test Jacobi
-        //int n = 4;
+        int n = 20;
         int maxsteps = 25000;
-        //Matrix A = Matrix.randomsym(n, n).muldig(100.0);
-        Matrix A = new Matrix(new double[][] {{5, 0.60, 0.30}, {0.30, 5, 0.100}, {0.20, 0.500, 5}} );
+        Matrix A = Matrix.randomsym(n, n);
+        A = A.muldiag(100.0);
+        //Matrix A = new Matrix(new double[][] {{5, 0.60, 0.30}, {0.30, 5, 0.100}, {0.20, 0.500, 5}, {}} );
         Matrix help1 = new Matrix(A.M, 1);
         for(int i = 0; i < A.M; i++)
             help1.data[i][0] = 1;
@@ -23,11 +24,12 @@ public class Main {
     public static void testSOR() {
         //test SOR
         System.out.println("hello SOR!");
-        int n = 5;
-        int maxsteps = 25;
+        int n = 20;
+        int maxsteps = 250;
         double w = 1.0;
-        //Matrix A = Matrix.randomsym(n, n);
-        Matrix A = new Matrix(new double[][]  {{5, 0.60, 0.30}, {0.30, 5, 0.100}, {0.20, 0.500, 5}} );
+        Matrix A = Matrix.randomsym(n, n);
+        A = A.muldiag(100.0);
+        //Matrix A = new Matrix(new double[][]  {{5, 0.60, 0.30}, {0.30, 5, 0.100}, {0.20, 0.500, 5}} );
         //Matrix A = new Matrix(new double[][] {{0.20, 0.50, 0.30}, {0.50, 0.40, 0.100}, {0.30, 0.100, 0.10}} );
         Matrix help1 = new Matrix(A.M, 1);
         for(int i = 0; i < A.M; i++)
