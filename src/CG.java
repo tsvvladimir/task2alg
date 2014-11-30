@@ -68,6 +68,12 @@ public class CG {
             dk = rk.plus(dk.muldig(bk));
             xk.show();
             System.out.println("\n");
+            Matrix nevyz = (B.minus(A.times(xk)));
+            double norm = nevyz.norm2();
+            if (norm < 0.0001) {
+                System.out.println("Congrats!!!!!! steps CG:" + step + "\n");
+                break;
+            }
         }
         return xk1;
     }

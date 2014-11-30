@@ -78,7 +78,7 @@ public class Main {
         //test optimum Jacobi
         System.out.println("hello Chebyshev!");
         int n = 5;
-        int maxsteps = 25;
+        int maxsteps = 100;
         double w = 1.3;
         //Matrix A = Matrix.randomsym(n, n);
         double m = -0.02;
@@ -104,7 +104,7 @@ public class Main {
         //test SOR
         System.out.println("hello CG!");
         int n = 5;
-        int maxsteps = 10;
+        int maxsteps = 100;
         double w = 1.3;
         //Matrix A = Matrix.randomsym(n, n);
         //Matrix A = new Matrix(new double[][] {{2.0, 1.0}, {1.0, 7.0}} );
@@ -150,11 +150,11 @@ public class Main {
 
      //testJacobi();
 
-     testSOR();
+     //testSOR();
 
      //testoptimumiterJacobi();
      //testcheba();
-     //testCG();
+     testCG();
 
     }
 }

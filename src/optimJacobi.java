@@ -73,6 +73,12 @@ public class optimJacobi {
             System.out.println("nevyazka:\n");
             (B.minus(A.times(xk))).show();
             System.out.println("\n");
+            Matrix nevyz = (B.minus(A.times(xk)));
+            double norm = nevyz.norm2();
+            if (norm < 0.0001) {
+                System.out.println("Congrats!!!!!! steps optim:" + step + "\n");
+                break;
+            }
         }
         System.out.println("A:\n");
         A.show();

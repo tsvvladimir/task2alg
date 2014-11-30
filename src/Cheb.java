@@ -89,6 +89,12 @@ public class Cheb {
             xk = xk1;
             xk1.show();
             System.out.println("\n");
+            Matrix nevyz = (B.minus(A.times(xk)));
+            double norm = nevyz.norm2();
+            if (norm < 0.0001) {
+                System.out.println("Congrats!!!!!! steps cheb:" + step + "\n");
+                break;
+            }
         }
 
         return xk1;
