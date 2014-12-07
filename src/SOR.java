@@ -76,9 +76,11 @@ public class SOR {
             xk1.setElement(i, 0, 1.0);
         }
         for(int step = 0; step < stepmax; step++) {
+
             Matrix help1 = L.plus(D.muldig(1/w));
             Matrix help2 = help1.degMin1();
             Matrix help3 = D.muldig(1/w).minus(D).minus(U);
+
             xk1 = help2.times(help3.times(xk).plus(B));
             xk = xk1;
             xk.show();
